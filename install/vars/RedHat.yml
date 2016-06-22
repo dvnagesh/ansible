@@ -1,0 +1,26 @@
+---
+pkg:
+  - mysql-utilities
+  - sqlite3-dbf
+#- name: Updating Yum repositories
+#  when: "ansible_os_family == 'RedHat'"
+#  yum:
+#    update_cache=yes
+#
+#- name: Installing Yum Package {{ pkg }}
+#  when: "ansible_os_family == 'RedHat'"
+#  yum:
+#    name={{ pkg }}
+#    state=latest
+
+#- name: Updating apt repositories from role
+#  when: "ansible_os_family == 'Debian'"
+#  apt:
+#    update_cache=yes
+#    cache_valid_time=10000
+#
+#- name: Installing Ubuntu Package {{ pkg }}
+#  when: "ansible_os_family == 'Debian'"
+#  apt:
+#    name={{ pkg }}
+#    state=latest
