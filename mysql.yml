@@ -1,0 +1,47 @@
+---
+- name: Play to Install package
+  hosts: testhosts
+  pre_tasks:
+  - name: Running pre-task, a task before role play on {{ ansible_hostname }}
+    command:
+       echo "pre-task"
+  - debug: msg="Pre task {{ ansible_distribution }}"
+#  - debug: msg="Pre task {{ ansible_distribution }} {{ ansible_eth0.ipv4.address }}"
+  roles:
+    - { role: install }
+    - { role: remove }
+#    - { role: install, pkg: mysql-client }
+#    - { role: install, pkg: postgresql-client }
+#    - { role: remove, pkg: mysql-client-5.5 }
+#    - { role: remove, pkg: postgresql-client-9.3 }
+  tasks:
+  - name: Task that runs after role play
+    command: echo "task"
+  post_tasks:
+  - name: Task that runs at the end
+    command: echo "post-task"
+
+# ansible all -m setup --> for list of system variables
+# Execution flow - pre_tasks, roles, tasks, post_tasks
+
+#    - { role: install, when: "ansible_os_family == 'Debian'", pkg: mysql-client }
+#    - { role: remove, when: "ansible_os_family == 'Debian'", pkg: mysql-client* }
+#  tasks:
+#  - include: apt-install.yml pkg=mysql-client
+#  - include: apt-remove.yml pkg=mysql-client*
+#  - name: Update apt repos
+#    apt:
+#      update_cache=yes
+#      cache_valid_time=2
+#
+#  - name: Run command
+#    shell:
+#      uptime >> /tmp/uptime.log
+#    notify:
+#      - restart ntp
+
+#  handlers:
+#  - name: restart ntp
+#    service: name=ntp state=restarted
+#  - name: restart cron
+#    service: name=cron state=restarted
