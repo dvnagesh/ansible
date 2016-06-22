@@ -1,0 +1,23 @@
+---
+- include_vars: "{{ ansible_os_family }}.yml"
+- include: "{{ ansible_os_family }}.yml"
+#- include: redhat.yml
+#  when: ansible_os_family == 'RedHat'
+#
+#- include: ubuntu.yml
+#  when: ansible_os_family == 'Debian'
+#
+#- name: Removing Yum Package {{ pkg }}
+##  apt: name={{ pkg }} state=absent autoremove=yes
+#  when: "ansible_os_family == 'RedHat'"
+#  yum:
+#    name={{ pkg }}
+#    state=absent
+#
+#- name:  Removing Ubuntu  Package {{ pkg }}
+##  apt: name={{ pkg }} state=absent autoremove=yes
+#  when: "ansible_os_family == 'Debian'"
+#  apt:
+#    name={{ pkg }}
+#    state=absent
+#    autoremove=yes
