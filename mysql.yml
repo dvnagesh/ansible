@@ -1,11 +1,13 @@
 ---
 - name: Play to Install package
-  hosts: testhosts
+  hosts: '{{ hosts }}'
+# ansible-playbook mysql.yml --extra-vars "hosts=testhosts"
+#  hosts: testhosts
   pre_tasks:
   - name: Running pre-task, a task before role play on {{ ansible_hostname }}
     command:
        echo "pre-task"
-  - debug: msg="Pre task {{ ansible_distribution }}"
+  - debug: msg="Pre task {{ ntp_server }}"
   - debug: msg="Remote host {{ hostvars['abc.example.com']['ansible_nodename'] }}"
 #  - debug: msg="Pre task {{ ansible_distribution }} {{ ansible_eth0.ipv4.address }}"
   roles:
