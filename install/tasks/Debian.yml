@@ -6,7 +6,7 @@
 #
 #- name: Installing Yum Package {{ pkg }}
 #  when: "ansible_os_family == 'RedHat'"
-#  yum:
+#  yum: 
 #    name={{ pkg }}
 #    state=latest
 
@@ -15,9 +15,12 @@
   apt:
     update_cache=yes
     cache_valid_time=10000
-
 - name: Installing Ubuntu Package {{ pkg }}
 #  when: "ansible_os_family == 'Debian'"
   apt:
     name={{ pkg }}
     state=latest
+#- fail: msg="x is not defined"
+#  when: x is undefined
+- name: Create list of servers from group
+  template: src=testfile dest=/tmp

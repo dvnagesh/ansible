@@ -16,7 +16,7 @@
 #
 #- name: Installing Yum Package {{ pkg }}
 #  when: "ansible_os_family == 'RedHat'"
-#  yum:
+#  yum: 
 #    name={{ pkg }}
 #    state=latest
 #

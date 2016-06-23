@@ -1,6 +1,6 @@
 ---
 - name: Installing Yum Package {{ pkg }}
-  yum:
+  yum: 
     name={{ pkg }}
     state=latest
 #- name: Updating apt repositories from role
