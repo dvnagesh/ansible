@@ -1,9 +1,9 @@
 ---
 - name: Removing Yum Package {{ pkg }}
 #  apt: name={{ pkg }} state=absent autoremove=yes
-  yum:
-    name={{ pkg }}
-    state=absent
+  yum: 
+    name={{ pkg }} 
+    state=absent 
 
 #- name:  Removing Ubuntu  Package {{ pkg }}
 ##  apt: name={{ pkg }} state=absent autoremove=yes
