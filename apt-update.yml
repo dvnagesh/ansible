@@ -1,0 +1,20 @@
+---
+- name: Play to update apt repositories
+  hosts: all
+  tasks:
+  - name: Update apt repos
+    apt: 
+      update_cache=yes
+      cache_valid_time=2
+
+  - name: Run command
+    shell:
+      uptime >> /tmp/uptime.log
+#    notify:
+#      - restart ntp
+
+  handlers:
+  - name: restart ntp
+    service: name=ntp state=restarted
+  - name: restart cron
+    service: name=cron state=restarted
