@@ -6,7 +6,7 @@
     command:
        echo "pre-task"
   - debug: msg="Pre task {{ ansible_distribution }}"
-  - debug: msg="Remote host {{ hostvars['liahl023.lss.emc.com']['ansible_nodename'] }}"
+  - debug: msg="Remote host {{ hostvars['abc.example.com']['ansible_nodename'] }}"
 #  - debug: msg="Pre task {{ ansible_distribution }} {{ ansible_eth0.ipv4.address }}"
   roles:
     - { role: install }
