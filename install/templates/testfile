@@ -1,0 +1,7 @@
+{{ hostvars['liahl023.lss.emc.com']['ansible_eth0']['ipv4']['address'] }}
+{% for host in groups['testhosts'] %}
+hostname is:{{ hostvars[host]['ansible_nodename'] }}
+hostos is:{{ hostvars[host]['ansible_os_family'] }}
+selinux is:{{ hostvars[host]['ansible_selinux'] }}
+{% endfor %}
+
