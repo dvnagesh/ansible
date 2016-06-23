@@ -1,3 +1,4 @@
+# group_names is a list (array) of all the groups the current host is in. This can be used to make template source files that vary based on the group membership (or role) of the host:
 {% if 'ubuntuhost' in group_names %}
    # This is a Ubuntu host config file
 host=ubuntu
@@ -11,4 +12,13 @@ host=centos
 host=testhost
 {% endif %}
 
+# These groups exist in Inventory
 
+{% for group in groups %}
+{{ group }}
+{% endfor %}
+
+# This host belongs to below groups
+{% for group in group_names %}
+{{ group }}
+{% endfor %}
