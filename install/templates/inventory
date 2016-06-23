@@ -1,0 +1,23 @@
+{{ hostvars['abc.example.com']['ansible_eth0']['ipv4']['address'] }}
+{% for host in groups['testhosts'] %}
+hostname	:{{ hostvars[host]['ansible_nodename'] }}
+host bits	:{{ hostvars[host]['ansible_architecture'] }}
+host IP		:{{ hostvars[host]['ansible_default_ipv4']['address'] }}
+host Interface	:{{ hostvars[host]['ansible_default_ipv4']['interface'] }}
+host MAC	:{{ hostvars[host]['ansible_default_ipv4']['macaddress'] }}
+host Disk	:{{ hostvars[host]['ansible_devices']['sda']['size'] }}
+host Memory	:{{ hostvars[host]['ansible_memtotal_mb'] }}
+host Cores	:{{ hostvars[host]['ansible_processor_cores'] }}
+host cpus	:{{ hostvars[host]['ansible_processor_count'] }}
+
+hostos          :{{ hostvars[host]['ansible_os_family'] }}
+OS Distro	:{{ hostvars[host]['ansible_distribution'] }}
+OS Major	:{{ hostvars[host]['ansible_distribution_major_version'] }}
+OS Version	:{{ hostvars[host]['ansible_distribution_version'] }}
+OS Release	:{{ hostvars[host]['ansible_distribution_release'] }}
+OS Kernel	:{{ hostvars[host]['ansible_kernel'] }}
+
+selinux         :{{ hostvars[host]['ansible_selinux'] }}
+
+{% endfor %}
+

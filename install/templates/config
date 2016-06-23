@@ -1,0 +1,14 @@
+{% if 'ubuntuhost' in group_names %}
+   # This is a Ubuntu host config file
+host=ubuntu
+{% endif %}
+{% if 'centoshost' in group_names %}
+   # This is a CentOS host config file
+host=centos
+{% endif %}
+{% if 'testhosts' in group_names %}
+   # This is a testhosts host config file
+host=testhost
+{% endif %}
+
+
