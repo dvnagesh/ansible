@@ -1,6 +1,6 @@
 ---
 - name: Play to Install package
-  hosts: '{{ hosts }}'
+  hosts: '{{ hosts | default("testhosts") }}'
 # ansible-playbook mysql.yml --extra-vars "hosts=testhosts"
 #  hosts: testhosts
   pre_tasks:
