@@ -5,7 +5,8 @@
   - name: Running pre-task, a task before role play on {{ ansible_hostname }}
     command:
        echo "pre-task"
-  - debug: msg="Pre task {{ ansible_distribution }} "
+  - debug: msg="Pre task {{ ansible_distribution }}"
+  - debug: msg="Remote host {{ hostvars['liahl023.lss.emc.com']['ansible_nodename'] }}"
 #  - debug: msg="Pre task {{ ansible_distribution }} {{ ansible_eth0.ipv4.address }}"
   roles:
     - { role: install }
@@ -30,7 +31,7 @@
 #  - include: apt-install.yml pkg=mysql-client
 #  - include: apt-remove.yml pkg=mysql-client*
 #  - name: Update apt repos
-#    apt:
+#    apt: 
 #      update_cache=yes
 #      cache_valid_time=2
 #
