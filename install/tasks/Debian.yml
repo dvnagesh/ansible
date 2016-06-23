@@ -22,5 +22,5 @@
     state=latest
 #- fail: msg="x is not defined"
 #  when: x is undefined
-- name: Create list of servers from group
-  template: src=testfile dest=/tmp
+#- name: Create list of servers from group
+#  template: src=testfile dest=/tmp

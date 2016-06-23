@@ -2,6 +2,12 @@
 - include_vars: "{{ ansible_os_family }}.yml"
 - include: "{{ ansible_os_family }}.yml"
 
+- name: Create list of servers from group
+  template: src=inventory dest=/tmp/inventory.txt
+
+- name: Create Config files 
+  template: src=config dest=/tmp/config.txt
+
 #- include: redhat.yml
 #  when: ansible_os_family == 'RedHat'
 #
