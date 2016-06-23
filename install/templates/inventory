@@ -1,4 +1,5 @@
-{{ hostvars['abc.example.com']['ansible_eth0']['ipv4']['address'] }}
+# groups is a list of all the groups (and hosts) in the inventory. This can be used to enumerate all hosts within a group.
+{{ hostvars['liahl023.lss.emc.com']['ansible_eth0']['ipv4']['address'] }}
 {% for host in groups['testhosts'] %}
 hostname	:{{ hostvars[host]['ansible_nodename'] }}
 host bits	:{{ hostvars[host]['ansible_architecture'] }}

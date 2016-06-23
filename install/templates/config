@@ -12,13 +12,19 @@ host=centos
 host=testhost
 {% endif %}
 
-# These groups exist in Inventory
+# groups These groups exist in Inventory
 
 {% for group in groups %}
 {{ group }}
 {% endfor %}
 
-# This host belongs to below groups
+# group_names This host belongs to below groups
 {% for group in group_names %}
 {{ group }}
 {% endfor %}
+
+# play_hosts list of inventory hosts in scope for current play
+{% for ph in play_hosts %}
+{{ ph }}
+{% endfor %}
+
