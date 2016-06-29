@@ -4,11 +4,43 @@
 # ansible-playbook mysql.yml --extra-vars "hosts=testhosts"
 #  hosts: testhosts
   pre_tasks:
+#  - fail: msg="'hostsa' not defined"
+#    when: hostsa is undefined
   - name: Running pre-task, a task before role play on {{ ansible_hostname }}
     command:
        echo "pre-task"
   - debug: msg="Pre task {{ ntp_server }}"
   - debug: msg="Remote host {{ hostvars['abc.example.com']['ansible_nodename'] }}"
+
+  - shell: cat /etc/issue
+    register: issue_opt
+  - shell: echo "Issue contains Ubuntu"
+    when: issue_opt.stdout.find('Ubuntu') != -1
+
+#    - name: retrieve the list of home directories
+#        command: ls /home
+#        register: home_dirs
+#      - name: add home dirs to the backup spooler
+#        file: path=/mnt/bkspool/{{ item }} src=/home/{{ item }} state=link
+#        with_items: "{{ home_dirs.stdout_lines }}"
+        # same as with_items: "{{ home_dirs.stdout.split() }}"
+
+#- name: add several users
+#  user: name={{ item.name }} state=present groups={{ item.groups }}
+#  with_items:
+#    - { name: 'testuser1', groups: 'wheel' }
+#    - { name: 'testuser2', groups: 'root' }
+
+#- action: shell /usr/bin/foo
+#  register: result
+#  until: result.stdout.find("all systems go") != -1
+#  retries: 5
+#  delay: 10
+
+#  - command: echo {{ item }}
+#    with_items: [ 0, 2, 4, 6, 8, 10 ]
+#    when: item > 5
+#  - debug: msg="Item value is {{ item }}"
 #  - debug: msg="Pre task {{ ansible_distribution }} {{ ansible_eth0.ipv4.address }}"
   roles:
     - { role: install }
